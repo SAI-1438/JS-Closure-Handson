@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Closure Handson</title>
+</head>
+<body>
+    <h1>Q1.function counter(){
+        var counter = 0;
+    
+        function IncreaseCounter() {
+            return counter += 1;
+        };
+    
+        return IncreaseCounter;
+        }
+    
+        var counter = counter();
+        alert(counter());
+        alert(counter());
+        alert(counter());
+        alert(counter());
+    </h1>
+    <p><b>Output:</b>Alert Poppup box of four times which gives the values of four alerts linely 1,2,3,4.</p>
+    <h1>Q2.let count = 0;
+        (function () {
+          if (count === 0) {
+            let count = 1;
+            console.log(count); // What is logged?
+          }
+          console.log(count); // What is logged?
+        })();
+    </h1>
+    <p><b>Output:</b>1,0 :--As this is a IIFE type of function it calls itself immediately. Hence, the function runs and as the condition was also true with global value of count hence the condition function runs so first console value is 1.<br>
+                            Then the condition ends and again the outter function runs and by the global value of counter the second console value was 0.</p>
+    <h1>Q3.for (var i = 0; i < 3; i++) {
+        setTimeout(function log() {
+          console.log(i); // What is logged?
+        }, 1000);
+        }
+    </h1>
+    <p><b>Output:</b>3 3 3 :--The output was as follows because the for acts as synchronour function and runs till the value of i becomes 3 and then the setTimeout function runs for there intervals of time 1sec. <br>
+                              hence, the value of i is 3 and printed for three intervals. </p>
+    <h1>Q4.Write a code to calculate area of a rectangle using inner function. In this case outer function should accept parameter length and inner function should accept parameter breadth.</h1>
+    <pre>function leng(l){
+        function bret(b){
+            area=l*b;
+            
+        }
+        bret(10);
+        }
+        leng(20);
+        console.log(area);
+    </pre>
+    <h1>Q5.Take a variable in outer function and create an inner function to increase the counter every time it is called</h1>
+    <pre>function abc(){
+        var counter = 10;
+        function xyz(){
+            console.log(counter+=1);
+            return counter;
+            }xyz();
+        }abc();
+    </pre>
+    <h1>Q6.var a = 12;
+        (function () {
+          alert(a);
+        })();
+    </h1>
+    <p><b>Output:Alert Poppup of (12)</b></p>
+    <h1>Q7.var a = 10;
+        var x = (function () {
+          var a = 12;
+          return function () {
+            alert(a);
+          };
+        })();
+        x();
+    </h1>
+    <p><b>Output:Alert(12)</b>The output was like a alert poppup of value 'a' that is 12.</p>
+    <h1>Q8.var globalVar = "xyz";
+        (function outerFunc(outerArg) {
+            var outerVar = 'a';
+            (function innerFunc(innerArg) {
+            var innerVar = 'b';
+            
+            console.log(
+                "outerArg = " + outerArg + "\n" +
+                "innerArg = " + innerArg + "\n" +
+                "outerVar = " + outerVar + "\n" +
+                "innerVar = " + innerVar + "\n" +
+                "globalVar = " + globalVar);
+            
+            })(456);
+        })(123);
+    </h1>
+    <p><b>Output:</b>outerArg = 123<br>
+        innerArg = 456<br>
+        outerVar = a<br>
+        innerVar = b<br>
+        globalVar = xyz
+    </p>
+
+
+
+<script src="./index.js"></script>
+</body>
+</html>
